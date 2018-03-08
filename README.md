@@ -1,10 +1,8 @@
 # Tor Relay Server on Docker
 
-**For from [https://github.com/chriswayg/tor-server/issues/1](https://github.com/chriswayg/tor-server/issues/1)**
+**Fork from [https://github.com/chriswayg/tor-server/issues/1](https://github.com/chriswayg/tor-server/issues/1)**
 
-[![badge](https://images.microbadger.com/badges/image/doudou34/tor-server.svg)](https://microbadger.com/images/doudou34/tor-server "Get your own image badge on microbadger.com")
-
-[![badge](https://images.microbadger.com/badges/version/doudou34/tor-server.svg)](https://microbadger.com/images/doudou34/tor-server "Get your own version badge on microbadger.com")
+[![badge](https://images.microbadger.com/badges/image/doudou34/tor-server.svg)](https://microbadger.com/images/doudou34/tor-server "Get your own image badge on microbadger.com") [![badge](https://images.microbadger.com/badges/version/doudou34/tor-server.svg)](https://microbadger.com/images/doudou34/tor-server "Get your own version badge on microbadger.com")
 
 **A complete, efficient and secure Tor relay server Docker image based on Debian Jessie**
 *This docker image will update automatically each time the Debian Jessie base image is updated and build & install the latest current stable version of Tor server. It will run Tor as an unprivileged regular user, as recommended by torproject.org.*
