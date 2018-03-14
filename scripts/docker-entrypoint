@@ -1,14 +1,14 @@
 #!/bin/bash
 set -o errexit
 
-echo -e "\n========================================================"
+echo -e "\\n========================================================"
 
 if [ ! -e /tor-config-done ]; then
     touch /tor-config-done   # only run this once
 
     # Add a Nickname, if none has been set in torrc
     if ! grep -q '^Nickname ' /etc/tor/torrc; then
-        if [ ${TOR_NICKNAME} == "Tor4" ]; then
+        if [ "${TOR_NICKNAME}" == "Tor4" ]; then
             # if user did not change the default Nickname, genetrate a random pronounceable one
             RPW=$(pwgen -0A 10)
             TOR_NICKNAME=${TOR_NICKNAME}${RPW}
@@ -16,35 +16,35 @@ if [ ! -e /tor-config-done ]; then
         else
             echo "Setting chosen Nickname: ${TOR_NICKNAME}"
         fi
-        echo -e "\nNickname ${TOR_NICKNAME}" >> /etc/tor/torrc
+        echo -e "\\nNickname ${TOR_NICKNAME}" >> /etc/tor/torrc
     fi
 
     # Add ContactInfo from env variable, if none has been set in torrc
     if ! grep -q '^ContactInfo ' /etc/tor/torrc; then
         if [  -n "${CONTACT_EMAIL}" ]; then
             echo "Setting Contact Email: ${CONTACT_EMAIL}"
-            echo -e "\nContactInfo ${CONTACT_EMAIL}" >> /etc/tor/torrc
+            echo -e "\\nContactInfo ${CONTACT_EMAIL}" >> /etc/tor/torrc
         fi
     fi
 
 fi
 
 # Port to advertise for incoming Tor connections.
-echo -e "\nORPort 9001" >> /etc/tor/torrc
+echo -e "\\nORPort 9001" >> /etc/tor/torrc
 # Run Tor only as a server (no local applications)
-echo -e "\nSocksPort 0" >> /etc/tor/torrc
+echo -e "\\nSocksPort 0" >> /etc/tor/torrc
 # Run as a relay only (not as an exit node)
-echo -e "\nExitPolicy reject *:*" >> /etc/tor/torrc
+echo -e "\\nExitPolicy reject *:*" >> /etc/tor/torrc
 # Run Tor as a regular user (do not change this)
-echo -e "\nUser debian-tor" >> /etc/tor/torrc
+echo -e "\\nUser debian-tor" >> /etc/tor/torrc
 
-echo -e "\nDataDirectory /var/lib/tor" >> /etc/tor/torrc
+echo -e "\\nDataDirectory /var/lib/tor" >> /etc/tor/torrc
 
-echo -e "\n========================================================"
+echo -e "\\n========================================================"
 # display Tor version & torrc in log
 tor --version
 cat /etc/tor/torrc
-echo -e "========================================================\n"
+echo -e "========================================================\\n"
 
 # else default to run whatever the user wanted like "bash"
 exec "$@"
