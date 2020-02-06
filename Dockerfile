@@ -6,9 +6,9 @@
 # as detailed here https://www.torproject.org/docs/debian.html.en
 #
 # Usage:
-#   docker run -d --restart=always -p 9001:9001 chriswayg/tor-server
+#   docker run -d --restart=always -p 9001:9001 doudou34/tor-server
 
-FROM debian:stretch
+FROM debian:buster
 LABEL MAINTAINER="Edouard COMTET<edouard.comtet@gmail.com>"
 
 # If no Nickname is set, a random string will be added to 'Tor4'
