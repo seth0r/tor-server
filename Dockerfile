@@ -16,10 +16,12 @@ ENV TOR_NICKNAME=Tor4
 ENV TERM=xterm
 
 RUN apt-get update
+RUN apt-get dist-upgrade -y
 RUN apt-get install -y tor
 RUN apt-get install -y pwgen
 RUN apt-get -y purge --auto-remove
-RUN apt-get clean
+RUN apt-get clean && \
+    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Copy docker-entrypoint
 COPY ./scripts/ /usr/local/bin/
